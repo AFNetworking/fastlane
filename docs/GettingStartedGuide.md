@@ -51,7 +51,7 @@ GITHUB_REPOSITORY=AFNetworking
 CARTHAGE_FRAMEWORK_NAME=AFNetworking
 ```
 
-For more configuration options, please the lane documentation below.
+For more configuration options and environment variables, please the [deployment lane documentation](DeployLanes.md).
 
 **TODO** Link to AFNetworking Setup.
 
