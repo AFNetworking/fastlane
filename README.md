@@ -63,7 +63,20 @@ In order to get the _most_ out of this tool, it is recommended you manage your G
 	* Removed
 
 # Getting Started
-A full [guide](docs/GettingStartedGuide.md) has been created to help get developers started.
+## Testing
+TBD
+
+## Deployment
+
+Getting up and running is a simple process:
+
+1. Setup the Fastfile
+2. Setup the env files
+3. Setup CI (optional)
+4. Generate a Github API Token
+5. Generate a Pod Trunk Access Token
+
+A full [guide](docs/GettingStartedGuide.md) has been created to help get developers get started with automating deployment.
 
 # Available Fastlane Lanes
 The lanes provided are divided into two groups: lanes meant for for testing, and lanes meant for deployment. In combination with the Github best practices above, developers can fully automate the release process.
