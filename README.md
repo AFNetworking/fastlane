@@ -30,7 +30,7 @@ That does the following:
  * Pulls the remote to verify the latest the branch is up to date
  * Updates the version of the info plist used by the framework
  * Updates the version of the podspec
- * Generates a changelog based on the Github milestone
+ * Generates a [changelog](https://github.com/AFNetworking/AFNetworking/blob/master/CHANGELOG.md#262-11062015) based on the Github [milestone](https://github.com/AFNetworking/AFNetworking/issues?q=milestone%3A2.6.2+is%3Aclosed)
  * Updates the changelog file
  * Commits the changes to master
  * Pushes the commited branch to the remote
@@ -41,7 +41,7 @@ That does the following:
 When the test have passed on CI, the `complete_framework_release` lane will _automatically_ run:
  
  1. Generates a changelog for the Github Release Page
- * Creates a Github Release
+ * Creates a [Github Release](https://github.com/AFNetworking/AFNetworking/releases/tag/2.6.2)
  * Builds Carthage Frameworks
  * Uploads Carthage Framework to Github Release
  * Pushes podspec to pod trunk
