@@ -1,7 +1,6 @@
 Objective-C/Swift Framework Deployment made easy
 ================
 
-# Overview
 Note this is still a **work in progress**.
 
 Creating a new release for an Objective-C/Swift open source framework is a tedious process. This fastlane setup is an attempt to streamline that process by creating a single button to generate a new release, allowing developers to focus on great updates, without the overhead of creating new releases.
@@ -38,7 +37,7 @@ That does the following:
  * Pushes the tag to the remote
  * Runs the tests on the CI server
 
-When the test have passed on CI, the `complete_framework_release` lane will _automatically_ run:
+When the tests have passed on CI, the `complete_framework_release` lane will _automatically_ run:
  
  1. Generates a changelog for the Github Release Page
  * Creates a [Github Release](https://github.com/AFNetworking/AFNetworking/releases/tag/2.6.2)
