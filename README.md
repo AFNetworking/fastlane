@@ -114,7 +114,7 @@ For more configuration options, please the lane documentation below.
 
 ### CI
 
-Configuring your repository for continuous integration allows your project to constantly be under test, and give you greater release. Both [Travis CI](http://docs.travis-ci.com/user/getting-started/) and [Circle CI](https://circleci.com/docs/getting-started) offer free plans for open source projects. This guide will focus on Travis CI integration.
+Configuring your repository for continuous integration allows your project to constantly be under test, and gives you greater confidence in your release. Both [Travis CI](http://docs.travis-ci.com/user/getting-started/) and [Circle CI](https://circleci.com/docs/getting-started) offer free plans for open source projects. This guide will focus on Travis CI integration.
 
 The AFNetworking `.travis.yml` file is setup as follows:
 
