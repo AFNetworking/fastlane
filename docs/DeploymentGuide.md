@@ -108,7 +108,7 @@ This can be read as follows:
 	* Secure environment variables can be configured using the [Travis web interface](http://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings). Any variable marked as hidden is only available to Travis jobs that we're initiated as the result of a trusted source, meaning anyone who submits a pull request to the repo without push access won't have access to these variables when the job runs on CI, keeping your passwords secure. 
 
 ### Deploying without CI
-It is possible to deploy without a CI setup. The `complete_framework_release` lane can be run locally if `skip_ci_check:true` is passed a parameter when run.
+It is possible to deploy without a CI setup. The `complete_framework_release` lane can be run locally if `skip_ci_check:true` is passed as parameter when run.
 
 ## Github API Token
 
