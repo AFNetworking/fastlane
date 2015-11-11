@@ -23,7 +23,7 @@ end
 
 #Test Lanes
 desc "Runs tests and builds example for the given environment"
-desc "The lane to run by travis ci on every commit This lanes calls the lanes `test_framework` and `build_example`."
+desc "The lane to run by ci on every commit This lanes calls the lanes `test_framework` and `build_example`."
 desc "####Example:"
 desc "```\nfastlane ci_commit configuration:Debug --env ios91\n```"
 desc "####Options"
