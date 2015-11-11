@@ -29,8 +29,8 @@ You can view additional documentation about these lanes [here](TestLanes.md).
 
 ```
 import_from_git(
-  url: 'git@github.com:AFNetworking/fastlane.git', 
-  branch: '0.0.1'
+  url: 'https://github.com/AFNetworking/fastlane.git', 
+  branch: '0.0.2'
 )
 ```
 
