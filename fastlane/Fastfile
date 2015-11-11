@@ -287,8 +287,7 @@ lane :complete_framework_release do |options|
     af_create_github_release(
         tag_name: version,
         name: version,
-        body: body,
-        prerelease: true
+        body: body
       )
       
       # generate the carthage zip
