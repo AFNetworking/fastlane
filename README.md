@@ -63,8 +63,18 @@ In order to get the _most_ out of this tool, it is recommended you manage your G
 	* Removed
 
 # Getting Started
+There are primary use cases for these fastlanes: testing and deployment. When used together, a full continuous integration system can be created.
+
 ## Testing
-TBD
+Getting the testing harness configured is an easy process.
+
+1. Configure the scheme's test action to run a test target, and confirm all tests pass locally
+2. Setup the Fastfile
+2. Setup the env files
+3. Setup CI (optional)
+4. Profit 💰
+
+Follow the [getting started guide](docs/TestingGuide.md) to configure the framework for testing.
 
 ## Deployment
 
@@ -75,8 +85,9 @@ Getting up and running is a simple process:
 3. Setup CI (optional)
 4. Generate a Github API Token
 5. Generate a Pod Trunk Access Token
+6. Profit 💰
 
-A full [guide](docs/GettingStartedGuide.md) has been created to help get developers get started with automating deployment.
+A full deployment [guide](docs/DeploymentGuide.md) has been created to help get developers get started with automating deployment.
 
 # Available Fastlane Lanes
 The lanes provided are divided into two groups: lanes meant for for testing, and lanes meant for deployment. In combination with the Github best practices above, developers can fully automate the release process.

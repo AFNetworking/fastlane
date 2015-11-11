@@ -1,5 +1,5 @@
-# Getting Started
-Getting up and running is a simple process, which is explained in detail below:
+# Getting Started with Automated Deployment
+Getting automated deployment up and running is a simple process:
 
 1. Setup the Fastfile
 2. Setup the env files
@@ -7,8 +7,10 @@ Getting up and running is a simple process, which is explained in detail below:
 4. Generate a Github API Token
 5. Generate a Pod Trunk Access Token
 
-## Local Fastlane
-* Create a `fastlane` directory in your repo
+## Local Fastfile
+If you have not already setup the local Fastfile for [testing](TestingGuide.md), follow these instructions.
+
+1. Create a `fastlane` directory in your repo
 * In the `fastlane` directory, create an empty `Fastfile`
 * Import the AFNetworking fastlane setup by adding the following to the top of the file:
 
@@ -69,7 +71,6 @@ env:
   global:
   - LC_CTYPE=en_US.UTF-8
   - LANG=en_US.UTF-8
-  - FASTLANE_LANE=ci_commit
   matrix:
     - FASTLANE_ENV=ios81
     - FASTLANE_ENV=ios82
@@ -85,8 +86,8 @@ before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
   - set -o pipefail
-  - fastlane $FASTLANE_LANE configuration:Debug --env $FASTLANE_ENV
-  - fastlane $FASTLANE_LANE configuration:Release --env $FASTLANE_ENV
+  - fastlane ci_commit configuration:Debug --env $FASTLANE_ENV
+  - fastlane ci_commit configuration:Release --env $FASTLANE_ENV
 deploy:
   provider: script
   script: fastlane complete_framework_release --env deploy
@@ -97,13 +98,12 @@ deploy:
 This can be read as follows:
 
 * Declare the project is Objective-C, should run on the Xcode 7.1 machine, and should not use `sudo`
-* Set the following global environment variables for all runs: `LC_CTYPE`, `LANG`, and `FASTLANE_LANE`
-	* By setting `FASTLANE_LANE`, branches can easily be configured to run a different lane if needed.
+* Set the following global environment variables for all runs: `LC_CTYPE` and `LANG`
 * Using matrix, spin up multiple concurrent Travis jobs, and run them with the specific environment variables for that line. 
 	* In this case, environment variables are being declared for the fastlane environment variable file name. These represent iOS 8.0-9.1, OS X, and tvOS 9.0. I can _easily_ add additional test targets as new versions are released by add a new environment variable file, and updating the `.travis.yml` to include it in the matrix.
 * Before anything runs, install fastlane, cocoapods, and xcpretty.
 * Run the following script for every job.
-	* This runs the lane provided by `$FASTLANE_LANE`, which in this case is `ci_commit`. The lane is run twice, once in Debug and once in Release, confirming both the tests and example project compile and pass all tests in both configurations.
+	* This runs the lane `ci_commit`. The lane is run twice, once in Debug and once in Release, confirming both the tests and example project compile and pass all tests in both configurations.
 * To deploy, run the `complete_framework_release` lane with the deploy environment, and only do it on a tag. Configure additional options here if needed.
 	* Secure environment variables can be configured using the [Travis web interface](http://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings). Any variable marked as hidden is only available to Travis jobs that we're initiated as the result of a trusted source, meaning anyone who submits a pull request to the repo without push access won't have access to these variables when the job runs on CI, keeping your passwords secure. 
 
