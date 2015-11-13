@@ -114,12 +114,18 @@ module Fastlane
         end
 
         if issues.count > 0
-          if sections.count > 0
-            section_label = "Additional Changes"
+          prompt_text = "There are #{issues.count} issue(s) that have not been properly categorized in this milestone. Do you want to continue?"
+          if Fastlane::Actions::PromptAction.run(text: prompt_text, boolean: true, ci_input: "y")
+            if sections.count > 0
+              section_label = "Additional Changes"
+            else
+              section_label = "Changes"
+            end
+            sections << {section: section_label, issues: issues}
           else
-            section_label = "Changes"
+            raise "Aborting since issues have not been categorized."
           end
-          sections << {section: section_label, issues: issues}
+          
         end
         
         
