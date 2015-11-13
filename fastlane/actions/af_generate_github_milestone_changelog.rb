@@ -28,7 +28,7 @@ module Fastlane
           end
           
           changelog << "* #{issue["title"]}\n"
-          changelog << " * Fixed by #{english_join(formatted_comitters)} in [##{issue["number"]}](#{issue["html_url"]}).\n"
+          changelog << " * Implemented by #{english_join(formatted_comitters)} in [##{issue["number"]}](#{issue["html_url"]}).\n"
         end
         return changelog
       end
