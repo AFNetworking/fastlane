@@ -20,15 +20,15 @@ module Fastlane
       def self.markdown_for_changelog_section (github_owner, github_repository, api_token, section, issues)
         changelog = "\n#### #{section}\n"
         issues.each do |issue|
-          committers = getCommittersForIssue(github_owner,github_repository, api_token, issue)
+          authors = getAuthorsForIssue(github_owner,github_repository, api_token, issue)
           
-          formatted_comitters = Array.new
-          committers.each do |committer|
-            formatted_comitters << "[#{committer["login"]}](#{committer["html_url"]})"
+          formatted_authors = Array.new
+          authors.each do |author|
+            formatted_authors << "[#{author["login"]}](#{author["html_url"]})"
           end
           
           changelog << "* #{issue["title"]}\n"
-          changelog << " * Implemented by #{english_join(formatted_comitters)} in [##{issue["number"]}](#{issue["html_url"]}).\n"
+          changelog << " * Implemented by #{english_join(formatted_authors)} in [##{issue["number"]}](#{issue["html_url"]}).\n"
         end
         return changelog
       end
@@ -73,20 +73,20 @@ module Fastlane
         return response["items"]
       end
       
-      def self.getCommittersForIssue(github_owner, github_repository, api_token, issue)
+      def self.getAuthorsForIssue(github_owner, github_repository, api_token, issue)
         if issue.has_key?("pull_request")
           url = "https://api.github.com/repos/#{github_owner}/#{github_repository}/pulls/#{issue["number"]}/commits"
 
          commits = getResponseForURL(url, api_token)
          
-         committers = Array.new
+         authors = Array.new
          commits.each do |pull_request|
-           committer = pull_request["committer"]
-           if committers.include?(committer) == false
-             committers << committer
+           author = pull_request["author"]
+           if authors.include?(author) == false
+             authors << author
            end
          end
-         return committers
+         return authors
         else
           return [issue["user"]]
         end
