@@ -80,8 +80,8 @@ module Fastlane
          commits = getResponseForURL(url, api_token)
          
          authors = Array.new
-         commits.each do |pull_request|
-           author = pull_request["author"]
+         commits.each do |commit|
+           author = commit["commit"]["author"]
            if authors.include?(author) == false
              authors << author
            end
