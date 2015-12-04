@@ -22,13 +22,8 @@ module Fastlane
         issues.each do |issue|
           authors = getAuthorsForIssue(github_owner,github_repository, api_token, issue)
           
-          formatted_authors = Array.new
-          authors.each do |author|
-            formatted_authors << "[#{author["login"]}](#{author["html_url"]})"
-          end
-          
           changelog << "* #{issue["title"]}\n"
-          changelog << " * Implemented by #{english_join(formatted_authors)} in [##{issue["number"]}](#{issue["html_url"]}).\n"
+          changelog << " * Implemented by #{english_join(authors)} in [##{issue["number"]}](#{issue["html_url"]}).\n"
         end
         return changelog
       end
@@ -82,13 +77,13 @@ module Fastlane
          authors = Array.new
          commits.each do |commit|
            author = commit["commit"]["author"]
-           if authors.include?(author) == false
-             authors << author
+           if authors.include?(author["name"]) == false
+             authors << author["name"]
            end
          end
          return authors
         else
-          return [issue["user"]]
+          return [issue["user"]["login"]]
         end
       end
       
