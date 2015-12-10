@@ -1,7 +1,7 @@
 Objective-C/Swift Framework Deployment made easy
 ================
 
-Note this is still a **work in progress**.
+🚧 **Note this is still a work in progress, and is not ready for production yet** 🚧
 
 Creating a new release for an Objective-C/Swift open source framework is a tedious process. This fastlane setup is an attempt to streamline that process by creating a single button to generate a new release, allowing developers to focus on great updates, without the overhead of creating new releases.
 
