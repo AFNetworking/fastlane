@@ -53,7 +53,7 @@ When the tests have passed on CI, the `complete_framework_release` lane will _au
 In order to get the _most_ out of this tool, it is recommended you manage your Github repo with the following best practices. It's easy to do, and gives you a lot of automation power with fastlane. Below is how AFNetworking is being managed:
 
 * Any changes that should be referenced in the changelog shoud be **merged using pull requests.**
-* **The title of the pull request should be consice**, and ready to display in the changelog. This means as the admin of the repo, it may be appropriate for you to edit a pull request's title to make it more meaningful.
+* **The title of the pull request should be concise**, and ready to display in the changelog. This means as the admin of the repo, it may be appropriate for you to edit a pull request's title to make it more meaningful.
 * **All releases should be managed with a Github milestone**. Not only does this provide a [well documented](https://github.com/AFNetworking/AFNetworking/issues?q=milestone%3A2.6.2) place for users to get a clear view of what went in to a release, but it will also serve as the main component for changelog generation. The milestone name should match the planned tag name.
 * **All issues merged should be grouped into one of five categories** using Github labels. This allows the changelog to be divided into multiple, logical sections, like [so](https://github.com/AFNetworking/AFNetworking/blob/master/CHANGELOG.md#262-11062015). You can see an example of an AFNetworking release managed this [way](https://github.com/AFNetworking/AFNetworking/issues?q=milestone%3A2.6.2+is%3Aclosed).
 	* Added
