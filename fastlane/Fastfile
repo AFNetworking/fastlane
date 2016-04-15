@@ -222,7 +222,8 @@ lane :prepare_framework_release do |options|
     # push the tag
     if options [:skip_push_tags] != true
       af_push_git_tags_to_remote(
-        remote: remote
+        remote: remote,
+        version: "#{options[:version]}"
       )
     end
     

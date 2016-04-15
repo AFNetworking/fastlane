@@ -8,7 +8,7 @@ module Fastlane
             commands << "#{params[:remote]}"
           end
 
-          commands << "--tags"
+          commands << "#{params[:version]}"
 
           result = Actions.sh("#{commands.join(" ")}")
           Helper.log.info "Tags pushed to remote".green
@@ -29,7 +29,12 @@ module Fastlane
                                        env_name: "FL_PUSH_GIT_TAGS_REMOTE",
                                        description: "The remote to push tags too",
                                        is_string:true,
-                                       optional:true)
+                                       optional:false),
+          FastlaneCore::ConfigItem.new(key: :version,
+                                       env_name: "FL_PUSH_GIT_TAGS_VERSION",
+                                       description: "The tag version to push",
+                                       is_string:true,
+                                       optional: false)
           ]
         end
 
