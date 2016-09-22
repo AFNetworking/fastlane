@@ -74,7 +74,6 @@ lane :build_example do |options|
     workspace: ENV["EXAMPLE_WORKSPACE"],
     scheme: ENV["EXAMPLE_SCHEME"],
     build: true,
-    destination: ENV["EXAMPLE_DESTINATION"],
     configuration: options[:configuration],
     build_settings: [["ONLY_ACTIVE_ARCH", "NO"]] 
   )
