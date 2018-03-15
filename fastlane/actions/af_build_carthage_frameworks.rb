@@ -20,7 +20,7 @@ module Fastlane
 
         Actions.lane_context[SharedValues::CARTHAGE_FRAMEWORK] = path
         
-        Helper.log.info "Carthage generated #{params[:framework_name]}.framework"
+        UI.success("Carthage generated #{params[:framework_name]}.framework")
         
         return path
       end

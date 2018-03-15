@@ -31,7 +31,7 @@ module Fastlane
         end
 
         result = Actions.sh("#{commands.join(" ")}")
-        Helper.log.info "Successfully linted podspec".green
+        UI.success("Successfully linted podspec")
         return result
       end
 

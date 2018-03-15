@@ -37,7 +37,7 @@ module Fastlane
           # Fetch Request
           res = http.request(req)
         rescue StandardError => e
-          Helper.log.info "HTTP Request failed (#{e.message})".red
+          UI.error("HTTP Request failed (#{e.message})")
         end
         
         case res.code.to_i
@@ -50,13 +50,13 @@ module Fastlane
               raise "No milestone found matching #{params[:title]}".red
             end
           
-            Helper.log.info "Milestone #{params[:title]}: #{milestone["url"]}".green
+            UI.success("Milestone #{params[:title]}: #{milestone["url"]}")
           
             if params[:verify_for_release] == true
                 raise "Milestone #{params[:title]} is already closed".red unless milestone["state"] == "open"
                 raise "Milestone #{params[:title]} still has open #{milestone["open_issues"]} issue(s)".red unless milestone["open_issues"] == 0
                 raise "Milestone #{params[:title]} has no closed issues".red unless milestone["closed_issues"] > 0
-                Helper.log.info "Milestone #{params[:title]} is ready for release!".green
+                UI.success("Milestone #{params[:title]} is ready for release!")
             end
           
             Actions.lane_context[SharedValues::GITHUB_MILESTONE_NUMBER] = milestone["number"]
@@ -65,7 +65,7 @@ module Fastlane
             json = JSON.parse(res.body)
             raise "Error Retrieving Github Milestone (#{res.code}): #{json["message"]}".red
           else
-            Helper.log.info "Status Code: #{res.code} Body: #{res.body}"
+            UI.message("Status Code: #{res.code} Body: #{res.body}")
             raise "Retrieving Github Milestone".red
         end
       
