@@ -89,7 +89,7 @@ desc " * **`configuration`**: The build configuration to use. The only supported
 desc ""
 lane :code_coverage do |options|
   if options[:configuration] != "Debug"
-    Helper.log.info "Not running code coverage lane for #{options[:configuration]} configuration".yellow
+    UI.important("Not running code coverage lane for #{options[:configuration]} configuration")
   else
     scan(
       configuration: options[:configuration],
@@ -190,7 +190,7 @@ lane :prepare_framework_release do |options|
       milestone: options[:version]
     )
     
-    Helper.log.info "Generated Changelog: #{changelog[:title]} #{changelog[:header]} #{changelog[:changelog]}"
+    UI.message("Generated Changelog: #{changelog[:title]} #{changelog[:header]} #{changelog[:changelog]}")
     
     changelog_path = options[:changelog_path] ? options[:changelog_path] : ENV["DEPLOY_CHANGELOG_PATH"]
     changelog_insert_delimiter = options[:changelog_insert_delimiter] ? options[:changelog_insert_delimiter] : ENV["DEPLOY_CHANGELOG_DELIMITER"]
@@ -234,7 +234,7 @@ lane :prepare_framework_release do |options|
     end
     
   else 
-    Helper.log.info "When finished, commit your changes and create your tag.".red
+    UI.error("When finished, commit your changes and create your tag.")
   end
 end
 
@@ -273,7 +273,7 @@ lane :complete_framework_release do |options|
   end
   
   version = options[:version] ? options[:version] : last_git_tag.strip
-  Helper.log.info "Using version #{version}"
+  UI.message("Using version #{version}")
   
   #Ensure clean branch
   if options[:allow_dirty_branch] != true

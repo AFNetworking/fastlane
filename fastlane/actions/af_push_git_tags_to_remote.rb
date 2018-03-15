@@ -11,7 +11,7 @@ module Fastlane
           commands << "--tags"
 
           result = Actions.sh("#{commands.join(" ")}")
-          Helper.log.info "Tags pushed to remote".green
+          UI.success("Tags pushed to remote")
           return result
         end
 

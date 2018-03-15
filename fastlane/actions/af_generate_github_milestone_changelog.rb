@@ -48,7 +48,7 @@ module Fastlane
                 response = JSON.parse(httpResponse.body)
                 raise "Error (#{response.code}): #{response["message"]}".red
               else
-                Helper.log.info "Status Code: #{httpResponse.code} Body: #{httpResponse.body}"
+                UI.message("Status Code: #{httpResponse.code} Body: #{httpResponse.body}")
                 raise "Error with request".red
             end
             

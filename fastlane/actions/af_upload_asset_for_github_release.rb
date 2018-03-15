@@ -46,20 +46,20 @@ module Fastlane
           # Fetch Request
           res = http.request(req)
         rescue StandardError => e
-          Helper.log.info "HTTP Request failed (#{e.message})".red
+          UI.error("HTTP Request failed (#{e.message})")
         end
         
         case res.code.to_i
           when 201
           json = JSON.parse(res.body)
-          Helper.log.info "#{json["name"]} has been uploaded to the release".green
+          UI.success("#{json["name"]} has been uploaded to the release")
           Actions.lane_context[SharedValues::GITHUB_UPLOAD_ASSET_URL] = json["browser_download_url"]
           return json
           when 400..499 
           json = JSON.parse(res.body)
           raise "Error Creating Github Release (#{res.code}): #{json}".red
           else
-          Helper.log.info "Status Code: #{res.code} Body: #{res.body}"
+          UI.message("Status Code: #{res.code} Body: #{res.body}")
           raise "Error Creating Github Release".red
         end
       end
