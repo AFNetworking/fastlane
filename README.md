@@ -5,7 +5,7 @@ Objective-C/Swift Framework Deployment made easy
 
 Creating a new release for an Objective-C/Swift open source framework is a tedious process. This fastlane setup is an attempt to streamline that process by creating a single button to generate a new release, allowing developers to focus on great updates, without the overhead of creating new releases.
 
-It is recommended to have a high level understanding of _what_ fastlane is, but it is not required. You can read up more on fastlane [here](https://github.com/fastlane/fastlane/tree/master/docs).
+It is recommended to have a high level understanding of _what_ fastlane is, but it is not required. You can read up more on fastlane [here](https://docs.fastlane.tools).
 
 ## Installation
 To install fastlane, simply use gem (related: [Should I use sudo?](http://stackoverflow.com/a/2119413)):
